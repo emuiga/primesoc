@@ -27,24 +27,16 @@ const rajdhani = Rajdhani({
   display: 'swap',
 })
 
-const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ||
-  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://primesoc.vercel.app')
-const ogImage = {
-  url: `${siteUrl}/opengraph-image`,
-  width: 1200,
-  height: 630,
-  alt: 'Primesoc Africa — East Africa\'s Premier Managed Security Services Provider',
-}
+import { siteUrl, ogImage } from '@/lib/config'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: {
-    default: 'Primesoc | #1 Managed Security Services Provider in Kenya & Africa',
+    default: 'Primesoc | Cybersecurity MSSP — Kenya & East Africa',
     template: '%s | Primesoc',
   },
   description:
-    "Primesoc is East Africa's leading MSSP delivering 24/7 SOC monitoring, penetration testing (VAPT), cyber threat intelligence, GRC compliance, and security engineering. Protecting businesses in Kenya, Nairobi, and across Africa.",
+    "East Africa's leading cybersecurity MSSP. 24/7 SOC monitoring, VAPT, threat intelligence, GRC compliance and security engineering — protecting businesses in Kenya and beyond.",
   keywords: [
     'cybersecurity company Kenya',
     'MSSP Africa',

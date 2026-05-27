@@ -3,6 +3,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getService, servicesList } from '@/lib/services'
 import { CTASection } from '@/components/CTASection'
+import { siteUrl, ogImage } from '@/lib/config'
 
 const photoBg: Record<string, string> = {
   soc:  'ph-bg-soc',
@@ -30,16 +31,16 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: service.metaTitle,
     description: service.metaDescription,
-    alternates: { canonical: `https://primesoc.africa/solutions/${params.slug}` },
+    alternates: { canonical: `${siteUrl}/solutions/${params.slug}` },
     openGraph: {
       title: service.metaTitle,
       description: service.metaDescription,
-      url: `https://primesoc.africa/solutions/${params.slug}`,
-      images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: service.metaTitle }],
+      url: `${siteUrl}/solutions/${params.slug}`,
+      images: [ogImage],
     },
     twitter: {
       card: 'summary_large_image' as const,
-      images: ['https://primesoc.africa/opengraph-image'],
+      images: [ogImage.url],
     },
   }
 }
@@ -60,11 +61,11 @@ export default function ServicePage({ params }: Props) {
     '@type': 'Service',
     name: service.metaTitle,
     description: service.metaDescription,
-    url: `https://primesoc.africa/solutions/${params.slug}`,
+    url: `${siteUrl}/solutions/${params.slug}`,
     provider: {
       '@type': 'Organization',
       name: 'Primesoc',
-      url: 'https://primesoc.africa',
+      url: siteUrl,
     },
     areaServed: { '@type': 'Continent', name: 'Africa' },
   }

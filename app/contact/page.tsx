@@ -1,20 +1,21 @@
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/ContactForm'
+import { siteUrl, ogImage } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Contact Primesoc | Get a Security Consultation',
   description:
     'Contact Primesoc for a cybersecurity consultation. SOC monitoring, VAPT, CTI, GRC — our experts are available 24/7. Nairobi, Kenya.',
-  alternates: { canonical: 'https://primesoc.africa/contact' },
+  alternates: { canonical: `${siteUrl}/contact` },
   openGraph: {
     title: 'Contact Primesoc | Get a Security Consultation',
     description: 'Speak to our security experts today. We respond within 2 business hours.',
-    url: 'https://primesoc.africa/contact',
-    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: 'Contact Primesoc' }],
+    url: `${siteUrl}/contact`,
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://primesoc.africa/opengraph-image'],
+    images: [ogImage.url],
   },
 }
 

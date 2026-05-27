@@ -3,22 +3,23 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { ShieldVisual } from '@/components/ShieldVisual'
 import { CTASection } from '@/components/CTASection'
+import { siteUrl, ogImage } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: "About Primesoc | East Africa's Premier Cybersecurity MSSP",
   description:
     "Primesoc is East Africa's premier Managed Security Services Provider, founded by security experts to deliver enterprise-grade cyber defence for organisations in Kenya and beyond.",
-  alternates: { canonical: 'https://primesoc.africa/about' },
+  alternates: { canonical: `${siteUrl}/about` },
   openGraph: {
     title: "About Primesoc | East Africa's Premier Cybersecurity MSSP",
     description:
       'Built by security experts. Delivering intelligence-driven cyber defence from Nairobi, Kenya.',
-    url: 'https://primesoc.africa/about',
-    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: 'About Primesoc' }],
+    url: `${siteUrl}/about`,
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://primesoc.africa/opengraph-image'],
+    images: [ogImage.url],
   },
 }
 

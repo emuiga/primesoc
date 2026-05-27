@@ -390,7 +390,7 @@ section, footer, header { position: relative; z-index: var(--z-base); }
   flex: 1; padding: 28px 36px;
   display: flex; flex-direction: column; justify-content: center; gap: 7px;
 }
-.value-banner-copy h3 {
+.value-banner-headline {
   font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;
   color: #ffffff; line-height: 1.3; letter-spacing: -0.3px;
 }
@@ -1131,7 +1131,7 @@ section, footer, header { position: relative; z-index: var(--z-base); }
     position: relative; z-index: 2;
     align-items: center;
   }
-  .value-banner-copy h3 { text-align: center; }
+  .value-banner-headline { text-align: center; }
   .value-banner-copy p { color: #ffffff; max-width: 100%; text-align: center; }
   .value-banner-cta {
     clip-path: none; margin-top: -18px;
