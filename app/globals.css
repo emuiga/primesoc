@@ -1055,6 +1055,8 @@ section, footer, header { position: relative; z-index: var(--z-base); }
 .form-group label { display: block; font-family: var(--font-mono); font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 7px; }
 .form-group input, .form-group textarea, .form-group select { width: 100%; padding: 11px 13px; background: var(--surface-2); border: 1px solid var(--border); border-radius: var(--radius); color: var(--text-loud); font-family: var(--font-display); font-size: 0.88rem; transition: border-color var(--transition); outline: none; }
 .form-group input:focus, .form-group textarea:focus, .form-group select:focus { border-color: var(--border-active); }
+.form-group input[aria-invalid="true"], .form-group textarea[aria-invalid="true"], .form-group select[aria-invalid="true"] { border-color: #ef4444; }
+.form-field-error { margin-top: 5px; font-family: var(--font-mono); font-size: 0.62rem; letter-spacing: 0.5px; color: #ef4444; }
 .form-group textarea { height: 120px; resize: vertical; }
 .form-group select option { background: var(--surface-2); }
 .form-nested { display: flex; gap: 0; margin-bottom: 4px; }

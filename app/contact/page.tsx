@@ -74,7 +74,7 @@ export default function ContactPage() {
           </h2>
           <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
             <iframe
-              src="https://calendly.com/originhqtechnologies/30min?hide_gdpr_banner=1&background_color=05060f&text_color=c7d3ea&primary_color=0891b2"
+              src="https://calendly.com/peterwambua025/30min?hide_gdpr_banner=1&background_color=05060f&text_color=c7d3ea&primary_color=0891b2"
               width="100%"
               height="700"
               loading="lazy"
