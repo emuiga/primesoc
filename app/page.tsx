@@ -3,10 +3,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { IconArrowRight } from '@/components/icons'
 
+import { siteUrl } from '@/lib/config'
+
 export const metadata: Metadata = {
   description:
-    "Africa's first line of cyber defense. Primesoc delivers 24/7 SOC monitoring, penetration testing (VAPT), cyber threat intelligence, GRC compliance, and security engineering.",
-  alternates: { canonical: 'https://primesoc.africa' },
+    "24/7 SOC monitoring, penetration testing, threat intelligence, GRC and security engineering. Primesoc is East Africa's premier cybersecurity MSSP, protecting businesses in Kenya and across Africa.",
+  alternates: { canonical: siteUrl },
 }
 
 const bentoCards = [
@@ -113,7 +115,7 @@ export default function HomePage() {
       <div className="value-banner-wrap">
         <div className="value-banner">
           <div className="value-banner-copy">
-            <h3>Your threat landscape never sleeps. Neither do we.</h3>
+            <p className="value-banner-headline">Your threat landscape never sleeps. Neither do we.</p>
             <p>Enterprise-grade managed security. Proactive, intelligent, and built for African businesses.</p>
           </div>
           <Link href="/contact" className="value-banner-cta" aria-label="Contact Us">

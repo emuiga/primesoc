@@ -2,22 +2,23 @@ import type { Metadata } from 'next'
 import Link from 'next/link'
 import Image from 'next/image'
 import { CTASection } from '@/components/CTASection'
+import { siteUrl, ogImage } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: "Careers | Join Primesoc's Cybersecurity Team",
   description:
     "Join East Africa's leading cybersecurity MSSP. We're hiring SOC analysts, penetration testers, threat intelligence analysts, GRC consultants, and security engineers.",
-  alternates: { canonical: 'https://primesoc.africa/careers' },
+  alternates: { canonical: `${siteUrl}/careers` },
   openGraph: {
     title: "Careers | Join Primesoc's Cybersecurity Team",
     description:
       'Work alongside elite security professionals. Build your career defending organisations across Africa.',
-    url: 'https://primesoc.africa/careers',
-    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: "Careers at Primesoc" }],
+    url: `${siteUrl}/careers`,
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
-    images: ['https://primesoc.africa/opengraph-image'],
+    images: [ogImage.url],
   },
 }
 

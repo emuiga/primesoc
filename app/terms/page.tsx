@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
+import { siteUrl } from '@/lib/config'
 
 export const metadata: Metadata = {
   title: 'Terms & Conditions | Primesoc',
   description:
     'Terms and Conditions governing the use of Primesoc cybersecurity services. Compliant with Kenyan law including the Data Protection Act 2019 and Computer Misuse and Cybercrimes Act 2018.',
-  alternates: { canonical: 'https://primesoc.africa/terms' },
+  alternates: { canonical: `${siteUrl}/terms` },
 }
 
 export default function TermsPage() {
