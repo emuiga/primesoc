@@ -27,7 +27,9 @@ const rajdhani = Rajdhani({
   display: 'swap',
 })
 
-const siteUrl = 'https://primesoc.africa'
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ||
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : 'https://primesoc.vercel.app')
 const ogImage = {
   url: `${siteUrl}/opengraph-image`,
   width: 1200,
