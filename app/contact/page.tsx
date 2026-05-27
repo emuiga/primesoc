@@ -27,8 +27,8 @@ const contactStrip = [
   },
   {
     label: 'Email',
-    value: 'info@primesoc.africa',
-    sub: 'pwambua@primesoc.africa',
+    value: 'info [at] primesoc.africa',
+    sub: 'pwambua [at] primesoc.africa',
   },
   {
     label: 'Phone',

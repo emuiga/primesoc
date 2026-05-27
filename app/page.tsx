@@ -71,12 +71,12 @@ export default function HomePage() {
 
         {/* Background image */}
         <div className="hero-bg" aria-hidden="true">
-          <Image src="/images/background1.jpg" alt="" fill priority style={{ objectFit: 'cover', objectPosition: 'center' }} />
+          <Image src="/images/background1.jpg" alt="" fill priority fetchPriority="high" style={{ objectFit: 'cover', objectPosition: 'center' }} />
         </div>
 
         {/* Globe — right panel on desktop, full bg on mobile */}
         <div className="hero-img-panel" aria-hidden="true">
-          <Image src="/images/hero-globe.jpg" alt="" fill className="hero-logo-mark" sizes="65vw" />
+          <Image src="/images/hero-globe.jpg" alt="" fill priority className="hero-logo-mark" sizes="65vw" />
         </div>
 
         {/* Grain */}
@@ -158,6 +158,7 @@ export default function HomePage() {
                     src={card.illustration}
                     alt=""
                     fill
+                    loading="lazy"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
                     style={{ objectFit: 'contain', objectPosition: 'center' }}
                   />
@@ -189,7 +190,7 @@ export default function HomePage() {
                   <p className="bento-card-desc">{f.desc}</p>
                 </div>
                 <div className="bento-card-img" aria-hidden="true">
-                  <Image src={f.illustration} alt="" fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                  <Image src={f.illustration} alt="" fill loading="lazy" sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: 'contain', objectPosition: 'center' }} />
                 </div>
               </div>
             ))}
