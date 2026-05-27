@@ -1,6 +1,5 @@
 import type { Metadata } from 'next'
 import { ContactForm } from '@/components/ContactForm'
-import { IconMapPin, IconMail, IconPhone, IconClock } from '@/components/icons'
 
 export const metadata: Metadata = {
   title: 'Contact Primesoc | Get a Security Consultation',
@@ -11,29 +10,34 @@ export const metadata: Metadata = {
     title: 'Contact Primesoc | Get a Security Consultation',
     description: 'Speak to our security experts today. We respond within 2 business hours.',
     url: 'https://primesoc.africa/contact',
+    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: 'Contact Primesoc' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://primesoc.africa/opengraph-image'],
   },
 }
 
-const contactInfo = [
+const contactStrip = [
   {
-    icon: <IconMapPin />,
-    title: 'Location',
-    lines: ['Nairobi, Kenya', 'East Africa'],
+    label: 'Location',
+    value: 'Nairobi, Kenya',
+    sub: 'East Africa',
   },
   {
-    icon: <IconMail />,
-    title: 'Email',
-    lines: ['info@primesoc.africa', 'pwambua@primesoc.africa'],
+    label: 'Email',
+    value: 'info@primesoc.africa',
+    sub: 'pwambua@primesoc.africa',
   },
   {
-    icon: <IconPhone />,
-    title: 'Phone',
-    lines: ['+254 714 873 020', 'Available 24/7 for emergencies'],
+    label: 'Phone',
+    value: '+254 714 873 020',
+    sub: 'Available 24/7 for emergencies',
   },
   {
-    icon: <IconClock />,
-    title: 'Response Time',
-    lines: ['We respond within 2 business hours.', 'Critical incidents: under 5 minutes.'],
+    label: 'Response Time',
+    value: '< 2 business hours',
+    sub: 'Critical incidents: under 5 min',
   },
 ]
 
@@ -42,10 +46,12 @@ export default function ContactPage() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────── */}
       <div className="page-header">
+        <div className="ph-bg ph-bg-3" aria-hidden="true" />
+        <div className="ph-fade" aria-hidden="true" />
         <div className="ph-orb-1" aria-hidden="true" />
         <div className="ph-orb-2" aria-hidden="true" />
         <div className="ph-inner">
-          <span className="ph-badge">// Get In Touch</span>
+          <span className="ph-badge">Get In Touch</span>
           <h1 className="ph-title">
             Let&#39;s Build Your<br />
             <span className="grad-text">Security Strategy</span>
@@ -58,49 +64,55 @@ export default function ContactPage() {
         </div>
       </div>
 
-      {/* ── CONTACT GRID ─────────────────────────────────────────── */}
-      <section className="section-pad">
+      {/* ── CALENDLY ─────────────────────────────────────────────── */}
+      <section className="section-pad" aria-labelledby="schedule-heading">
         <div className="container">
-          <div className="contact-layout">
-            {/* Form */}
-            <div>
-              <span className="label-mono">// Send a Message</span>
-              <h2 className="section-heading" style={{ marginTop: 12, fontSize: '1.8rem' }}>
-                Start the <span className="grad-text">Conversation</span>
-              </h2>
-              <div style={{ marginTop: 28 }}>
-                <ContactForm />
-              </div>
-            </div>
-
-            {/* Info */}
-            <div>
-              <span className="label-mono">// Our Details</span>
-              <h2 className="section-heading" style={{ marginTop: 12, fontSize: '1.8rem' }}>
-                Find <span className="grad-text">Us Here</span>
-              </h2>
-              <div className="contact-info-list" style={{ marginTop: 28 }}>
-                {contactInfo.map((info) => (
-                  <div key={info.title} className="contact-info-item">
-                    <div className="contact-info-icon" aria-hidden="true">
-                      {info.icon}
-                    </div>
-                    <div>
-                      <h4>{info.title}</h4>
-                      <p>
-                        {info.lines.map((line, i) => (
-                          <span key={i}>
-                            {line}
-                            {i < info.lines.length - 1 && <br />}
-                          </span>
-                        ))}
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <span className="label-mono">Book a Meeting</span>
+          <h2 className="section-heading" id="schedule-heading" style={{ marginTop: 10, marginBottom: 28 }}>
+            Schedule a <span className="grad-text">Consultation</span>
+          </h2>
+          <div style={{ borderRadius: 'var(--radius-lg)', overflow: 'hidden', border: '1px solid var(--border)' }}>
+            <iframe
+              src="https://calendly.com/originhqtechnologies/30min?hide_gdpr_banner=1&background_color=05060f&text_color=c7d3ea&primary_color=0891b2"
+              width="100%"
+              height="700"
+              loading="lazy"
+              title="Schedule a consultation with Primesoc"
+              style={{ display: 'block', border: 'none' }}
+            />
           </div>
+        </div>
+      </section>
+
+      {/* ── FORM ─────────────────────────────────────────────────── */}
+      <section className="section-pad" style={{ paddingTop: 0 }} aria-labelledby="form-heading">
+        <div className="container">
+          <div className="contact-form-wrap">
+            <span className="label-mono">Send a Message</span>
+            <h2 className="section-heading" id="form-heading" style={{ marginTop: 10, marginBottom: 32 }}>
+              Start the <span className="grad-text">Conversation</span>
+            </h2>
+            <ContactForm />
+          </div>
+        </div>
+      </section>
+
+      {/* ── FIND US ───────────────────────────────────────────────── */}
+      <section className="section-pad" style={{ paddingTop: 0 }} aria-labelledby="find-us-heading">
+        <div className="container">
+          <span className="label-mono">Find Us</span>
+          <h2 className="section-heading" id="find-us-heading" style={{ marginTop: 10, marginBottom: 0 }}>
+            Reach <span className="grad-text">Us Here</span>
+          </h2>
+        </div>
+        <div className="contact-strip" role="list" aria-label="Contact information">
+          {contactStrip.map((item) => (
+            <div key={item.label} className="contact-strip-item" role="listitem">
+              <span className="contact-strip-label">{item.label}</span>
+              <span className="contact-strip-value">{item.value}</span>
+              <span className="contact-strip-sub">{item.sub}</span>
+            </div>
+          ))}
         </div>
       </section>
     </>

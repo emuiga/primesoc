@@ -3,29 +3,37 @@ import { Exo_2, JetBrains_Mono, Rajdhani } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/Navbar'
 import { Footer } from '@/components/Footer'
+import { WhatsAppFloat } from '@/components/WhatsAppFloat'
+import { Toaster } from 'sonner'
 
 const exo2 = Exo_2({
   subsets: ['latin'],
-  weight: ['300', '400', '500', '600', '700', '900'],
+  weight: ['400', '500', '600', '700', '900'],
   variable: '--font-display',
   display: 'swap',
 })
 
 const jetBrainsMono = JetBrains_Mono({
   subsets: ['latin'],
-  weight: ['300', '400', '500'],
+  weight: ['400', '500'],
   variable: '--font-mono',
   display: 'swap',
 })
 
 const rajdhani = Rajdhani({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700'],
+  weight: ['500', '600', '700'],
   variable: '--font-sub',
   display: 'swap',
 })
 
 const siteUrl = 'https://primesoc.africa'
+const ogImage = {
+  url: `${siteUrl}/opengraph-image`,
+  width: 1200,
+  height: 630,
+  alt: 'Primesoc Africa — East Africa\'s Premier Managed Security Services Provider',
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -60,9 +68,6 @@ export const metadata: Metadata = {
     follow: true,
     googleBot: { index: true, follow: true },
   },
-  alternates: {
-    canonical: siteUrl,
-  },
   openGraph: {
     type: 'website',
     locale: 'en_KE',
@@ -70,22 +75,17 @@ export const metadata: Metadata = {
     siteName: 'Primesoc',
     title: 'Primesoc | Managed Security Services Provider — Kenya & Africa',
     description:
-      '24/7 SOC monitoring, VAPT, cyber threat intelligence, GRC compliance and security engineering. East Africa\'s premier cybersecurity MSSP.',
-    images: [
-      {
-        url: '/og-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'Primesoc – Managed Security Services Provider',
-      },
-    ],
+      "24/7 SOC monitoring, VAPT, cyber threat intelligence, GRC compliance and security engineering. East Africa's premier cybersecurity MSSP.",
+    images: [ogImage],
   },
   twitter: {
     card: 'summary_large_image',
+    site: '@primesoc',
+    creator: '@primesoc',
     title: 'Primesoc | MSSP Kenya & Africa',
     description:
       'Enterprise-grade managed cybersecurity services — SOC, VAPT, CTI, GRC — for businesses in Kenya and across Africa.',
-    images: ['/og-image.png'],
+    images: [ogImage.url],
   },
   icons: {
     icon: '/logo.png',
@@ -193,6 +193,22 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <Navbar />
         <main>{children}</main>
         <Footer />
+        <WhatsAppFloat />
+        <Toaster
+          position="top-right"
+          offset={{ top: 76 }}
+          theme="dark"
+          toastOptions={{
+            style: {
+              background: '#09091a',
+              border: '1px solid rgba(186,214,247,0.1)',
+              color: '#e8edf7',
+              fontFamily: 'var(--font-mono)',
+              fontSize: '0.78rem',
+              letterSpacing: '0.3px',
+            },
+          }}
+        />
       </body>
     </html>
   )

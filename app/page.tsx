@@ -1,231 +1,136 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { SocConsole } from '@/components/SocConsole'
-import { ShieldVisual } from '@/components/ShieldVisual'
-import {
-  IconShield,
-  IconSearch,
-  IconGlobe,
-  IconClipboard,
-  IconGear,
-  IconTarget,
-  IconEye,
-  IconLayers,
-  IconCpu,
-  IconScan,
-  IconLock,
-  IconRadar,
-  IconTrendingUp,
-  IconArrowRight,
-} from '@/components/icons'
+import Image from 'next/image'
+import { IconArrowRight } from '@/components/icons'
 
 export const metadata: Metadata = {
-  title: 'Primesoc | #1 Managed Security Services Provider in Kenya & Africa',
   description:
-    "Primesoc is East Africa's leading MSSP delivering 24/7 SOC monitoring, penetration testing (VAPT), cyber threat intelligence, GRC compliance, and security engineering.",
+    "Africa's first line of cyber defense. Primesoc delivers 24/7 SOC monitoring, penetration testing (VAPT), cyber threat intelligence, GRC compliance, and security engineering.",
   alternates: { canonical: 'https://primesoc.africa' },
 }
-
-const tickerItems = [
-  '24/7 SOC Monitoring',
-  'Advanced Threat Detection',
-  'Zero Trust Architecture',
-  'Incident Response',
-  'Vulnerability Management',
-  'Compliance & GRC',
-  'Threat Intelligence',
-  'Penetration Testing',
-]
 
 const bentoCards = [
   {
     href: '/solutions/soc',
     cls: 'bento-soc',
-    icon: <IconShield />,
     title: 'Security Operations',
     desc: '24/7 SOC with real-time threat monitoring, SIEM management, incident response, and threat hunting — your dedicated security nerve centre.',
-    featured: true,
+    illustration: '/images/Security-amico.svg',
   },
   {
     href: '/solutions/vapt',
     cls: 'bento-vapt',
-    icon: <IconSearch />,
-    title: 'VAPT',
+    title: 'Vulnerability Assessment & Pen Testing',
     desc: 'Comprehensive vulnerability assessments and penetration testing across your entire attack surface.',
+    illustration: '/images/Fingerprint-bro.svg',
   },
   {
     href: '/solutions/cti',
     cls: 'bento-cti',
-    icon: <IconGlobe />,
-    title: 'Cyber Threat Intel',
+    title: 'Cyber Threat Intelligence',
     desc: 'Proactive threat intelligence to stay ahead of adversaries with actionable, contextualised data.',
+    illustration: '/images/Security-bro.svg',
   },
   {
     href: '/solutions/grc',
     cls: 'bento-grc',
-    icon: <IconClipboard />,
     title: 'GRC & Compliance',
     desc: 'Governance, Risk & Compliance aligned to ISO 27001, SOC 2, NIST, and Kenya Data Protection Act.',
+    illustration: '/images/Secure data-amico.svg',
   },
   {
     href: '/solutions/eng',
     cls: 'bento-eng',
-    icon: <IconGear />,
     title: 'Security Engineering',
     desc: 'Security architecture design, SOAR automation, and tool integration for robust, resilient infrastructure.',
+    illustration: '/images/All the data-bro.svg',
   },
 ]
 
 const whyFeatures = [
-  {
-    icon: <IconTarget />,
-    title: 'Proactive Defence',
-    desc: 'We hunt threats before they reach you — not after the breach.',
-  },
-  {
-    icon: <IconEye />,
-    title: 'Expert-Led SOC',
-    desc: 'Certified analysts with deep expertise across frameworks and industries.',
-  },
-  {
-    icon: <IconLayers />,
-    title: 'Custom Integrations',
-    desc: 'Seamless integration with your existing security stack and tools.',
-  },
-  {
-    icon: <IconCpu />,
-    title: 'Intelligence-Driven',
-    desc: 'Every decision backed by real-time threat intelligence and analytics.',
-  },
+  { illustration: '/images/Endpoint-amico.svg',     title: 'Proactive Defence',    desc: 'We hunt threats before they reach you — not after the breach. Active threat hunting, 24/7.' },
+  { illustration: '/images/Fingerprint-cuate.svg',  title: 'Expert-Led SOC',       desc: 'Certified analysts with deep expertise across frameworks and industries — human-led, always on.' },
+  { illustration: '/images/Security-cuate.svg',     title: 'Custom Integrations',  desc: 'Seamless integration with your existing security stack, tools, and cloud environments.' },
+  { illustration: '/images/Fingerprint-amico.svg',  title: 'Intelligence-Driven',  desc: 'Every decision backed by real-time threat intelligence, IOC feeds, and behavioural analytics.' },
 ]
 
 const processSteps = [
-  {
-    num: '01',
-    icon: <IconScan />,
-    title: 'Assess',
-    desc: 'Deep-dive security assessment of your environment — mapping risks, vulnerabilities, and gaps across your entire attack surface.',
-  },
-  {
-    num: '02',
-    icon: <IconLock />,
-    title: 'Secure',
-    desc: 'Implement layered defences, access controls, and hardened security architecture tailored to your threat profile.',
-  },
-  {
-    num: '03',
-    icon: <IconRadar />,
-    title: 'Monitor',
-    desc: 'Continuous 24/7 monitoring across your environment with SIEM, EDR, and behavioural analytics.',
-  },
-  {
-    num: '04',
-    icon: <IconTrendingUp />,
-    title: 'Improve',
-    desc: 'Ongoing optimisation based on threat intelligence, post-incident reviews, and performance benchmarks.',
-  },
+  { num: '01', color: '#FF9505', title: 'Assess',  desc: 'Deep-dive security assessment of your environment — mapping risks, vulnerabilities, and gaps across your entire attack surface.' },
+  { num: '02', color: '#1A5FA8', title: 'Secure',  desc: 'Implement layered defences, access controls, and hardened security architecture tailored to your threat profile.' },
+  { num: '03', color: '#22c55e', title: 'Monitor', desc: 'Continuous 24/7 monitoring across your environment with SIEM, EDR, and behavioural analytics.' },
+  { num: '04', color: '#06b6d4', title: 'Improve', desc: 'Ongoing optimisation based on threat intelligence, post-incident reviews, and performance benchmarks.' },
 ]
 
 export default function HomePage() {
   return (
     <>
-      {/* ── TICKER ─────────────────────────────────────────────────── */}
-      <div style={{ paddingTop: 72 }}>
-        <div className="ticker-bar">
-          <div className="ticker-track" aria-hidden="true">
-            {[...tickerItems, ...tickerItems].map((item, i) => (
-              <span key={i} className="ticker-item">
-                <span className="ticker-sep" aria-hidden="true">///</span>
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ── HERO ───────────────────────────────────────────────────── */}
       <section className="hero" aria-label="Hero">
-        <div className="hero-orb-1" aria-hidden="true" />
-        <div className="hero-orb-2" aria-hidden="true" />
-        <div className="hero-orb-3" aria-hidden="true" />
 
-        <div className="hero-inner">
-          {/* Left column */}
-          <div>
-            <div className="hero-label">
-              <span className="label-pill">
-                <span className="label-pill-dot" aria-hidden="true" />
-                Intelligence-Driven Security
-              </span>
-            </div>
-
-            <h1 className="hero-title">
-              Advanced Cyber<br />
-              Defence for a{' '}
-              <span className="grad-text">Digital World</span>
-            </h1>
-
-            <p className="hero-sub">
-              Primesoc delivers enterprise-grade managed security services —
-              monitoring, detecting, and responding to threats before they impact
-              your business.
-            </p>
-
-            <div className="hero-actions">
-              <Link href="/solutions/soc" className="btn-primary">
-                Explore Solutions
-                <IconArrowRight size={16} />
-              </Link>
-              <Link href="/contact" className="btn-ghost">
-                Talk to an Expert
-              </Link>
-            </div>
-
-            <div className="hero-proof" aria-label="Key metrics">
-              <div className="hero-proof-stat">
-                <span className="hero-proof-num">24/7</span>
-                <span className="hero-proof-label">Monitoring</span>
-              </div>
-              <div className="hero-proof-divider" aria-hidden="true" />
-              <div className="hero-proof-stat">
-                <span className="hero-proof-num">&lt;5 min</span>
-                <span className="hero-proof-label">Response</span>
-              </div>
-              <div className="hero-proof-divider" aria-hidden="true" />
-              <div className="hero-proof-stat">
-                <span className="hero-proof-num">99.9%</span>
-                <span className="hero-proof-label">Uptime SLA</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Right column — SOC console */}
-          <SocConsole />
+        {/* Background image */}
+        <div className="hero-bg" aria-hidden="true">
+          <Image src="/images/background1.jpg" alt="" fill priority style={{ objectFit: 'cover', objectPosition: 'center' }} />
         </div>
+
+        {/* Globe — right panel on desktop, full bg on mobile */}
+        <div className="hero-img-panel" aria-hidden="true">
+          <Image src="/images/hero-globe.jpg" alt="" fill className="hero-logo-mark" sizes="65vw" />
+        </div>
+
+        {/* Grain */}
+        <div className="hero-grain" aria-hidden="true" />
+
+        {/* Dark overlay */}
+        <div className="hero-overlay" aria-hidden="true" />
+
+        {/* Copy */}
+        <div className="hero-copy">
+          <h1 className="hero-title">
+            <span>Africa&apos;s First Line of</span>
+            <em>Cyber Defense</em>
+          </h1>
+
+          <p className="hero-sub">
+            Primesoc delivers enterprise-grade managed security services.
+            Monitoring, detecting, and responding to threats before they
+            impact your business.
+          </p>
+
+          <div className="hero-actions">
+            <Link href="/contact" className="btn-primary">
+              Get Protected
+              <IconArrowRight size={15} />
+            </Link>
+            <Link href="/solutions/soc" className="btn-ghost">
+              Explore Solutions
+            </Link>
+          </div>
+        </div>
+
       </section>
 
-      {/* ── STATS GRID ─────────────────────────────────────────────── */}
-      <div className="stats-grid" role="list" aria-label="Key statistics">
-        {[
-          { num: '500+', label: 'Threats Neutralised' },
-          { num: '<5 min', label: 'Mean Response Time' },
-          { num: '50+', label: 'Clients Protected' },
-          { num: '99.9%', label: 'Uptime Guaranteed' },
-        ].map((s) => (
-          <div key={s.label} className="stat-item" role="listitem">
-            <span className="stat-num">{s.num}</span>
-            <span className="stat-label">{s.label}</span>
+      {/* ── VALUE BANNER ───────────────────────────────────────────── */}
+      <div className="value-banner-wrap">
+        <div className="value-banner">
+          <div className="value-banner-copy">
+            <h3>Your threat landscape never sleeps. Neither do we.</h3>
+            <p>Enterprise-grade managed security. Proactive, intelligent, and built for African businesses.</p>
           </div>
-        ))}
+          <Link href="/contact" className="value-banner-cta" aria-label="Contact Us">
+            <span className="value-banner-btn">
+              Contact Us <IconArrowRight size={15} />
+            </span>
+          </Link>
+        </div>
       </div>
 
       {/* ── SOLUTIONS BENTO ────────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="solutions-heading">
+      <section className="section-pad section-bg section-bg-1" aria-labelledby="solutions-heading">
         <div className="container">
-          <span className="label-mono">// Our Solutions</span>
-          <h2 className="section-heading" id="solutions-heading" style={{ marginTop: 12 }}>
+          <span className="label-mono">Solutions</span>
+          <h2 className="section-heading" id="solutions-heading" style={{ marginTop: 10 }}>
             Comprehensive{' '}
-            <span className="grad-text">Security Services</span>
+            <span className="accent-text">Security Services</span>
           </h2>
           <p className="section-sub">
             End-to-end managed security tailored to protect your organisation
@@ -235,26 +140,27 @@ export default function HomePage() {
           <div className="bento-grid">
             {bentoCards.map((card) => (
               <Link key={card.href} href={card.href} className={`bento-card ${card.cls}`}>
-                <div className="bento-card-icon" aria-hidden="true">
-                  {card.icon}
-                </div>
-                <div className="bento-card-title">{card.title}</div>
-                <p className="bento-card-desc">{card.desc}</p>
 
-                {card.featured && (
-                  <div className="bento-soc-visual" aria-hidden="true">
-                    <div className="bento-grid-lines" />
-                    <div className="bento-scan-line" />
-                    <div className="bento-data-point" style={{ top: '28%', left: '58%' }} />
-                    <div className="bento-data-point" style={{ top: '60%', left: '25%', animationDelay: '0.9s' }} />
-                    <div className="bento-data-point" style={{ top: '42%', left: '80%', animationDelay: '1.6s' }} />
-                    <div className="bento-data-point" style={{ top: '74%', left: '65%', animationDelay: '0.4s' }} />
+                {/* Text — left */}
+                <div className="bento-card-body">
+                  <div className="bento-card-title">{card.title}</div>
+                  <p className="bento-card-desc">{card.desc}</p>
+                  <div className="bento-card-link">
+                    Learn More <IconArrowRight size={13} />
                   </div>
-                )}
-
-                <div className="bento-card-link">
-                  Learn More <IconArrowRight size={12} />
                 </div>
+
+                {/* Image — right half, vibrant, fills the panel */}
+                <div className="bento-card-img" aria-hidden="true">
+                  <Image
+                    src={card.illustration}
+                    alt=""
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 480px"
+                    style={{ objectFit: 'contain', objectPosition: 'center' }}
+                  />
+                </div>
+
               </Link>
             ))}
           </div>
@@ -262,63 +168,51 @@ export default function HomePage() {
       </section>
 
       {/* ── WHY PRIMESOC ───────────────────────────────────────────── */}
-      <section
-        className="section-pad"
-        style={{ background: 'linear-gradient(180deg, transparent, rgba(26,95,168,0.05), transparent)' }}
-        aria-labelledby="why-heading"
-      >
+      <section className="section-pad section-bg section-bg-3" style={{ borderTop: '1px solid var(--border)' }} aria-labelledby="why-heading">
         <div className="container">
-          <div className="why-layout">
-            <div>
-              <span className="label-mono">// Why Choose Us</span>
-              <h2 className="section-heading" id="why-heading" style={{ marginTop: 12 }}>
-                Why <span className="grad-text">Primesoc?</span>
-              </h2>
-              <p className="section-sub">
-                We combine intelligence, expertise, and cutting-edge technology
-                to deliver security that adapts to your organisation.
-              </p>
-              <ul className="why-features" style={{ marginTop: 32 }}>
-                {whyFeatures.map((f) => (
-                  <li key={f.title} className="why-feature-card">
-                    <div className="why-feature-icon" aria-hidden="true">
-                      {f.icon}
-                    </div>
-                    <div className="why-feature-content">
-                      <h4>{f.title}</h4>
-                      <p>{f.desc}</p>
-                    </div>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <ShieldVisual />
+          <span className="label-mono">Why Primesoc</span>
+          <h2 className="section-heading" id="why-heading" style={{ marginTop: 10 }}>
+            Why <span className="accent-text">Primesoc?</span>
+          </h2>
+          <p className="section-sub">
+            Intelligence, expertise, and technology working together
+            to deliver security that adapts to your organisation.
+          </p>
+
+          <div className="why-grid">
+            {whyFeatures.map((f) => (
+              <div key={f.title} className="bento-card why-card">
+                <div className="bento-card-body">
+                  <div className="bento-card-title">{f.title}</div>
+                  <p className="bento-card-desc">{f.desc}</p>
+                </div>
+                <div className="bento-card-img" aria-hidden="true">
+                  <Image src={f.illustration} alt="" fill sizes="(max-width: 768px) 100vw, 300px" style={{ objectFit: 'contain', objectPosition: 'center' }} />
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
       {/* ── PROCESS ────────────────────────────────────────────────── */}
-      <section className="section-pad" aria-labelledby="process-heading">
+      <section className="section-pad section-bg section-bg-5" style={{ borderTop: '1px solid var(--border)' }} aria-labelledby="process-heading">
         <div className="container">
-          <span className="label-mono">// How We Work</span>
-          <h2 className="section-heading" id="process-heading" style={{ marginTop: 12 }}>
-            Our <span className="grad-text">Security Process</span>
+          <span className="label-mono">How We Work</span>
+          <h2 className="section-heading" id="process-heading" style={{ marginTop: 10 }}>
+            Our <span className="accent-text">Security Process</span>
           </h2>
           <p className="section-sub">
             A proven four-phase methodology that takes you from risk to resilience.
           </p>
 
-          <div className="process-timeline">
+          <div className="process-grid">
             {processSteps.map((step) => (
-              <div key={step.num} className="timeline-step">
-                <div className="timeline-node" aria-hidden="true">
-                  {step.icon}
-                  <span className="timeline-num">{step.num}</span>
-                </div>
-                <div className="timeline-content">
-                  <h4>{step.title}</h4>
-                  <p>{step.desc}</p>
-                </div>
+              <div key={step.num} className="process-card">
+                <span className="process-num" style={{ color: step.color }}>{step.num}</span>
+                <div className="process-card-accent" style={{ background: step.color }} />
+                <div className="process-card-title">{step.title}</div>
+                <p className="process-card-desc">{step.desc}</p>
               </div>
             ))}
           </div>
@@ -327,22 +221,24 @@ export default function HomePage() {
 
       {/* ── CTA ────────────────────────────────────────────────────── */}
       <div className="cta-wrap">
-        <span className="label-mono" style={{ marginBottom: 18, display: 'inline-block' }}>
-          // Get Protected
-        </span>
-        <h2>Ready to Secure Your Organisation?</h2>
-        <p>
-          Join organisations across East Africa and beyond who trust Primesoc
-          to protect their critical assets 24/7.
-        </p>
-        <div className="cta-buttons">
-          <Link href="/contact" className="btn-primary">
-            Request a Consultation
-            <IconArrowRight size={16} />
-          </Link>
-          <Link href="/solutions/soc" className="btn-ghost">
-            Explore Solutions
-          </Link>
+        <div className="cta-content">
+          <span className="label-mono" style={{ marginBottom: 16, display: 'inline-block' }}>
+            Get Protected
+          </span>
+          <h2>Ready to Secure Your Organisation?</h2>
+          <p>
+            Join organisations across East Africa and beyond who trust Primesoc
+            to protect their critical assets — around the clock.
+          </p>
+          <div className="cta-buttons">
+            <Link href="/contact" className="btn-primary">
+              Request a Consultation
+              <IconArrowRight size={15} />
+            </Link>
+            <Link href="/solutions/soc" className="btn-ghost">
+              Explore Solutions
+            </Link>
+          </div>
         </div>
       </div>
     </>

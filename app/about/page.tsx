@@ -1,8 +1,8 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { ShieldVisual } from '@/components/ShieldVisual'
 import { CTASection } from '@/components/CTASection'
-import { IconTarget, IconGlobe, IconAward } from '@/components/icons'
 
 export const metadata: Metadata = {
   title: "About Primesoc | East Africa's Premier Cybersecurity MSSP",
@@ -14,22 +14,27 @@ export const metadata: Metadata = {
     description:
       'Built by security experts. Delivering intelligence-driven cyber defence from Nairobi, Kenya.',
     url: 'https://primesoc.africa/about',
+    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: 'About Primesoc' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://primesoc.africa/opengraph-image'],
   },
 }
 
 const mvv = [
   {
-    icon: <IconTarget />,
+    icon: '/images/target.png',
     title: 'Mission',
     desc: 'To empower organisations with proactive, intelligence-led cybersecurity services that protect critical assets, ensure operational continuity, and build lasting digital resilience.',
   },
   {
-    icon: <IconGlobe />,
+    icon: '/images/planet-earth.png',
     title: 'Vision',
     desc: 'To be the most trusted cybersecurity partner in Africa — setting the standard for managed security services through innovation, expertise, and relentless vigilance.',
   },
   {
-    icon: <IconAward />,
+    icon: '/images/loyalty.png',
     title: 'Values',
     desc: 'Integrity in every engagement. Excellence in every solution. Transparency with every client. We operate with the highest ethical standards in everything we do.',
   },
@@ -40,11 +45,13 @@ export default function AboutPage() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────── */}
       <div className="page-header">
+        <div className="ph-bg ph-bg-identity" aria-hidden="true" />
+        <div className="ph-fade" aria-hidden="true" />
         <div className="ph-hex" aria-hidden="true" />
         <div className="ph-orb-1" aria-hidden="true" />
         <div className="ph-orb-2" aria-hidden="true" />
         <div className="ph-inner">
-          <span className="ph-badge">// Who We Are</span>
+          <span className="ph-badge">Who We Are</span>
           <h1 className="ph-title">
             Defending the Digital Frontier<br />
             with <span className="grad-text">Intelligence &amp; Precision</span>
@@ -62,7 +69,7 @@ export default function AboutPage() {
         <div className="container">
           <div className="about-layout">
             <div className="about-copy">
-              <span className="label-mono">// Our Story</span>
+              <span className="label-mono">Our Story</span>
               <h2 className="section-heading" id="story-heading" style={{ marginTop: 12 }}>
                 Built by <span className="grad-text">Security Experts</span>
               </h2>
@@ -99,7 +106,7 @@ export default function AboutPage() {
 
           {/* ── MVV ──────────────────────────────────────────────── */}
           <div style={{ marginTop: 80 }}>
-            <span className="label-mono">// Our Foundation</span>
+            <span className="label-mono">Our Foundation</span>
             <h2 className="section-heading" style={{ marginTop: 12, marginBottom: 0 }}>
               Mission, Vision &amp; <span className="grad-text">Values</span>
             </h2>
@@ -107,9 +114,7 @@ export default function AboutPage() {
             <div className="mvv-grid">
               {mvv.map((card) => (
                 <div key={card.title} className="mvv-card">
-                  <div className="mvv-icon" aria-hidden="true">
-                    {card.icon}
-                  </div>
+                  <Image src={card.icon} alt="" width={88} height={88} className="mvv-card-img" aria-hidden="true" />
                   <h3>{card.title}</h3>
                   <p>{card.desc}</p>
                 </div>
@@ -120,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       <CTASection
-        tag="// Work With Us"
+        tag="Work With Us"
         title="Want to Work With Us?"
         body="Let's build a more secure digital future together. Partner with East Africa's premier MSSP."
         btnLabel="Get In Touch"

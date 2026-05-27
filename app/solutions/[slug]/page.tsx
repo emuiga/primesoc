@@ -3,45 +3,13 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import { getService, servicesList } from '@/lib/services'
 import { CTASection } from '@/components/CTASection'
-import {
-  IconDatabase, IconSearch, IconAlert, IconRadar, IconActivity, IconFileText,
-  IconNetwork, IconGlobe, IconCloud, IconSmartphone, IconUserCheck,
-  IconEye, IconTarget, IconBarChart,
-  IconClipboard, IconBook, IconAward, IconUsers,
-  IconGear, IconLink, IconKey, IconTrendingUp,
-  IconShield, IconCpu, IconCheckCircle, IconBriefcase,
-} from '@/components/icons'
-import type { JSX } from 'react'
 
-const iconMap: Record<string, JSX.Element> = {
-  siem: <IconDatabase />,
-  hunt: <IconSearch />,
-  incident: <IconAlert />,
-  edr: <IconRadar />,
-  alert: <IconActivity />,
-  report: <IconFileText />,
-  network: <IconNetwork />,
-  web: <IconGlobe />,
-  cloud: <IconCloud />,
-  mobile: <IconSmartphone />,
-  social: <IconUserCheck />,
-  darkweb: <IconEye />,
-  actor: <IconTarget />,
-  ioc: <IconDatabase />,
-  strategic: <IconBarChart />,
-  industry: <IconBriefcase />,
-  breach: <IconAlert />,
-  iso: <IconClipboard />,
-  regulatory: <IconCheckCircle />,
-  risk: <IconAward />,
-  policy: <IconBook />,
-  training: <IconUsers />,
-  vendor: <IconLink />,
-  architecture: <IconShield />,
-  integration: <IconLink />,
-  soar: <IconCpu />,
-  iam: <IconKey />,
-  dashboard: <IconTrendingUp />,
+const photoBg: Record<string, string> = {
+  soc:  'ph-bg-soc',
+  vapt: 'ph-bg-2',
+  cti:  'ph-bg-cti',
+  grc:  'ph-bg-grc',
+  eng:  'ph-bg-5',
 }
 
 const bgVariant: Record<string, string> = {
@@ -67,6 +35,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       title: service.metaTitle,
       description: service.metaDescription,
       url: `https://primesoc.africa/solutions/${params.slug}`,
+      images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: service.metaTitle }],
+    },
+    twitter: {
+      card: 'summary_large_image' as const,
+      images: ['https://primesoc.africa/opengraph-image'],
     },
   }
 }
@@ -80,11 +53,32 @@ export default function ServicePage({ params }: Props) {
   if (!service) notFound()
 
   const bgCls = bgVariant[params.slug] ?? ''
+  const photoCls = photoBg[params.slug] ?? 'ph-bg-1'
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    name: service.metaTitle,
+    description: service.metaDescription,
+    url: `https://primesoc.africa/solutions/${params.slug}`,
+    provider: {
+      '@type': 'Organization',
+      name: 'Primesoc',
+      url: 'https://primesoc.africa',
+    },
+    areaServed: { '@type': 'Continent', name: 'Africa' },
+  }
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ── PAGE HEADER ──────────────────────────────────────────── */}
       <div className="page-header">
+        <div className={`ph-bg ${photoCls}`} aria-hidden="true" />
+        <div className="ph-fade" aria-hidden="true" />
         {bgCls && <div className={bgCls} aria-hidden="true" />}
         <div className="ph-orb-1" aria-hidden="true" />
         <div className="ph-orb-2" aria-hidden="true" />
@@ -104,19 +98,19 @@ export default function ServicePage({ params }: Props) {
       {/* ── FEATURES ─────────────────────────────────────────────── */}
       <section className="section-pad" aria-labelledby="features-heading">
         <div className="container">
-          <span className="label-mono">// Core Capabilities</span>
+          <span className="label-mono">Core Capabilities</span>
           <h2 className="section-heading" id="features-heading" style={{ marginTop: 12 }}>
             What We <span className="grad-text">Deliver</span>
           </h2>
 
           <div className="features-grid">
-            {service.features.map((feat) => (
+            {service.features.map((feat, i) => (
               <div key={feat.title} className="feat-card">
-                <div className="feat-icon" aria-hidden="true">
-                  {iconMap[feat.iconKey] ?? <IconShield />}
+                <div className="feat-card-body">
+                  <div className="feat-num">{String(i + 1).padStart(2, '0')}</div>
+                  <div className="feat-title">{feat.title}</div>
+                  <p className="feat-desc">{feat.desc}</p>
                 </div>
-                <div className="feat-title">{feat.title}</div>
-                <p className="feat-desc">{feat.desc}</p>
               </div>
             ))}
           </div>
@@ -124,7 +118,7 @@ export default function ServicePage({ params }: Props) {
       </section>
 
       <CTASection
-        tag="// Get Started"
+        tag="Get Started"
         title="Ready to Get Started?"
         body="Speak to one of our security specialists about your specific needs."
         btnLabel="Request a Consultation"
