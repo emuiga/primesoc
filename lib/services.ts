@@ -2,6 +2,7 @@ export interface ServiceFeature {
   iconKey: string
   title: string
   desc: string
+  image?: string
 }
 
 export interface Service {
@@ -18,7 +19,7 @@ export interface Service {
 export const services: Record<string, Service> = {
   soc: {
     slug: 'soc',
-    badge: '// Security Operations',
+    badge: 'Security Operations',
     title: 'Security Operations',
     subtitle: 'Center (SOC)',
     description:
@@ -61,7 +62,7 @@ export const services: Record<string, Service> = {
   },
   vapt: {
     slug: 'vapt',
-    badge: '// Offensive Security',
+    badge: 'Offensive Security',
     title: 'Vulnerability Assessment &',
     subtitle: 'Penetration Testing',
     description:
@@ -104,7 +105,7 @@ export const services: Record<string, Service> = {
   },
   cti: {
     slug: 'cti',
-    badge: '// Threat Intelligence',
+    badge: 'Threat Intelligence',
     title: 'Cyber Threat',
     subtitle: 'Intelligence (CTI)',
     description:
@@ -147,7 +148,7 @@ export const services: Record<string, Service> = {
   },
   grc: {
     slug: 'grc',
-    badge: '// Governance & Compliance',
+    badge: 'Governance & Compliance',
     title: 'GRC & Compliance',
     subtitle: 'Management',
     description:
@@ -190,7 +191,7 @@ export const services: Record<string, Service> = {
   },
   eng: {
     slug: 'eng',
-    badge: '// Security Engineering',
+    badge: 'Security Engineering',
     title: 'Cyber Security',
     subtitle: 'Engineering & Integration',
     description:

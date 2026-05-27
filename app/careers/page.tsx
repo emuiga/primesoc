@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import Image from 'next/image'
 import { CTASection } from '@/components/CTASection'
-import { IconRocket, IconGlobe, IconUsers, IconZap } from '@/components/icons'
 
 export const metadata: Metadata = {
   title: "Careers | Join Primesoc's Cybersecurity Team",
@@ -13,38 +13,35 @@ export const metadata: Metadata = {
     description:
       'Work alongside elite security professionals. Build your career defending organisations across Africa.',
     url: 'https://primesoc.africa/careers',
+    images: [{ url: 'https://primesoc.africa/opengraph-image', width: 1200, height: 630, alt: "Careers at Primesoc" }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    images: ['https://primesoc.africa/opengraph-image'],
   },
 }
 
 const perks = [
   {
-    icon: <IconRocket />,
+    icon: '/images/mission.png',
     title: 'Growth & Learning',
     desc: 'Continuous training, certifications (CISSP, CEH, OSCP), and real-world experience on complex security challenges.',
   },
   {
-    icon: <IconGlobe />,
+    icon: '/images/planet-earth.png',
     title: 'Meaningful Impact',
     desc: 'Protect critical infrastructure and organisations that matter — your work directly defends people and businesses.',
   },
   {
-    icon: <IconUsers />,
+    icon: '/images/cultural-diversity.png',
     title: 'Collaborative Culture',
     desc: 'Work alongside some of the best security minds in East Africa in an environment built on trust and collaboration.',
   },
   {
-    icon: <IconZap />,
+    icon: '/images/project-management.png',
     title: 'Cutting-Edge Tech',
     desc: 'Access to the latest tools, platforms, and technologies in threat detection, response, and security engineering.',
   },
-]
-
-const jobs = [
-  { title: 'SOC Analyst (Tier 2)', dept: 'Security Operations', type: 'Full-Time', location: 'Nairobi, Kenya' },
-  { title: 'Penetration Tester', dept: 'VAPT', type: 'Full-Time', location: 'Nairobi, Kenya' },
-  { title: 'Threat Intelligence Analyst', dept: 'CTI', type: 'Full-Time', location: 'Nairobi, Kenya' },
-  { title: 'GRC Consultant', dept: 'Governance & Compliance', type: 'Full-Time', location: 'Nairobi, Kenya' },
-  { title: 'Security Engineer', dept: 'Engineering', type: 'Full-Time', location: 'Nairobi, Kenya' },
 ]
 
 export default function CareersPage() {
@@ -52,11 +49,13 @@ export default function CareersPage() {
     <>
       {/* ── PAGE HEADER ──────────────────────────────────────────── */}
       <div className="page-header">
+        <div className="ph-bg ph-bg-4" aria-hidden="true" />
+        <div className="ph-fade" aria-hidden="true" />
         <div className="ph-circuit" aria-hidden="true" />
         <div className="ph-orb-1" aria-hidden="true" />
         <div className="ph-orb-2" aria-hidden="true" />
         <div className="ph-inner">
-          <span className="ph-badge">// Join the Team</span>
+          <span className="ph-badge">Join the Team</span>
           <h1 className="ph-title">
             Defend the Future.<br />
             <span className="grad-text">Build Your Career.</span>
@@ -75,7 +74,7 @@ export default function CareersPage() {
       {/* ── PERKS ────────────────────────────────────────────────── */}
       <section className="section-pad" aria-labelledby="perks-heading">
         <div className="container">
-          <span className="label-mono">// Why Primesoc</span>
+          <span className="label-mono">Why Primesoc</span>
           <h2 className="section-heading" id="perks-heading" style={{ marginTop: 12 }}>
             Why Work <span className="grad-text">With Us?</span>
           </h2>
@@ -83,45 +82,30 @@ export default function CareersPage() {
           <div className="perks-grid">
             {perks.map((p) => (
               <div key={p.title} className="perk-card">
-                <div className="perk-icon" aria-hidden="true">
-                  {p.icon}
-                </div>
+                <Image src={p.icon} alt="" width={76} height={76} className="perk-card-img" aria-hidden="true" />
                 <h4>{p.title}</h4>
                 <p>{p.desc}</p>
               </div>
             ))}
           </div>
 
-          {/* ── JOBS ─────────────────────────────────────────────── */}
+          {/* ── OPEN ROLES ────────────────────────────────────────── */}
           <div id="open-roles" style={{ marginTop: 80 }}>
-            <span className="label-mono">// Open Positions</span>
-            <h2 className="section-heading" style={{ marginTop: 12 }}>
+            <h2 className="section-heading">
               Current <span className="grad-text">Opportunities</span>
             </h2>
-
-            <div className="jobs-list" role="list">
-              {jobs.map((job) => (
-                <div key={job.title} className="job-card" role="listitem">
-                  <div className="job-info">
-                    <h4>{job.title}</h4>
-                    <div className="job-tags">
-                      <span className="job-tag tag-dept">{job.dept}</span>
-                      <span className="job-tag tag-type">{job.type}</span>
-                      <span className="job-tag tag-loc">{job.location}</span>
-                    </div>
-                  </div>
-                  <Link href="/contact" className="btn-sm">
-                    Apply Now
-                  </Link>
-                </div>
-              ))}
+            <div style={{ marginTop: 32, padding: '40px 32px', background: 'var(--surface-1)', border: '1px solid var(--border)', borderRadius: 'var(--radius-lg)', textAlign: 'center' }}>
+              <p style={{ fontFamily: 'var(--font-body)', fontWeight: 500, color: '#ffffff', fontSize: '0.95rem', lineHeight: 1.7 }}>
+                No open positions right now — but we&apos;re always growing.<br />
+                Send an open application below and we&apos;ll be in touch.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
       <CTASection
-        tag="// Open Application"
+        tag="Open Application"
         title="Don't See the Right Role?"
         body="We're always open to talented people. Send us your profile and we'll reach out when the right opportunity opens."
         btnLabel="Send Open Application"

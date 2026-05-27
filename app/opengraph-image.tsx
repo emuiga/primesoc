@@ -1,63 +1,73 @@
 import { ImageResponse } from 'next/og'
+import { readFile } from 'fs/promises'
+import path from 'path'
 
-export const runtime = 'edge'
-export const alt = 'Primesoc — Managed Security Services Provider'
+export const runtime = 'nodejs'
+export const alt = 'Primesoc — East Africa\'s Premier Managed Security Services Provider'
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
-export default function OGImage() {
+export default async function OGImage() {
+  const globeBuffer = await readFile(path.join(process.cwd(), 'public/images/hero-globe.jpg'))
+  const globeBase64 = `data:image/jpeg;base64,${globeBuffer.toString('base64')}`
+
   return new ImageResponse(
     (
       <div
         style={{
-          background: '#050C18',
+          background: '#05060f',
           width: '100%',
           height: '100%',
           display: 'flex',
-          flexDirection: 'column',
-          alignItems: 'center',
-          justifyContent: 'center',
           position: 'relative',
-          fontFamily: 'sans-serif',
           overflow: 'hidden',
+          fontFamily: 'sans-serif',
         }}
       >
-        {/* Grid background */}
+        {/* Globe image — right side */}
+        <img
+          src={globeBase64}
+          style={{
+            position: 'absolute',
+            right: -40,
+            top: -40,
+            width: 720,
+            height: 720,
+            objectFit: 'cover',
+            opacity: 0.6,
+          }}
+        />
+
+        {/* Gradient fade over globe — left to right */}
         <div
           style={{
             position: 'absolute',
             inset: 0,
-            backgroundImage:
-              'linear-gradient(rgba(30,100,180,0.07) 1px, transparent 1px), linear-gradient(90deg, rgba(30,100,180,0.07) 1px, transparent 1px)',
-            backgroundSize: '60px 60px',
+            background:
+              'linear-gradient(to right, #05060f 30%, rgba(5,6,15,0.85) 55%, rgba(5,6,15,0.2) 100%)',
           }}
         />
 
-        {/* Blue orb left */}
+        {/* Bottom fade */}
         <div
           style={{
             position: 'absolute',
-            width: 500,
-            height: 500,
-            borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(26,95,168,0.35) 0%, transparent 70%)',
-            filter: 'blur(80px)',
-            top: -100,
-            left: -100,
+            inset: 0,
+            background: 'linear-gradient(to top, rgba(5,6,15,0.7) 0%, transparent 50%)',
           }}
         />
 
-        {/* Teal orb right */}
+        {/* Blue glow — top left */}
         <div
           style={{
             position: 'absolute',
-            width: 400,
-            height: 400,
+            width: 480,
+            height: 480,
             borderRadius: '50%',
-            background: 'radial-gradient(circle, rgba(30,173,181,0.22) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(8,145,178,0.28) 0%, transparent 70%)',
             filter: 'blur(80px)',
-            bottom: -50,
-            right: -50,
+            top: -120,
+            left: -80,
           }}
         />
 
@@ -66,74 +76,88 @@ export default function OGImage() {
           style={{
             display: 'flex',
             flexDirection: 'column',
-            alignItems: 'center',
-            gap: 20,
+            justifyContent: 'center',
+            gap: 0,
             position: 'relative',
             zIndex: 2,
-            textAlign: 'center',
-            padding: '0 80px',
+            padding: '60px 72px',
+            maxWidth: 680,
           }}
         >
           {/* Badge */}
           <div
             style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 8,
               fontFamily: 'monospace',
-              fontSize: 14,
+              fontSize: 13,
               letterSpacing: 3,
-              color: '#1EADB5',
+              color: '#0891b2',
               textTransform: 'uppercase',
-              background: 'rgba(30,173,181,0.08)',
-              border: '1px solid rgba(30,173,181,0.3)',
-              padding: '6px 18px',
+              background: 'rgba(8,145,178,0.08)',
+              border: '1px solid rgba(8,145,178,0.35)',
+              padding: '6px 16px',
               borderRadius: 4,
+              alignSelf: 'flex-start',
+              marginBottom: 28,
             }}
           >
-            // Managed Security Services Provider
+            // East Africa&apos;s #1 MSSP
           </div>
 
-          {/* Title */}
+          {/* Main title */}
           <div
             style={{
-              fontSize: 64,
+              fontSize: 80,
               fontWeight: 900,
-              color: '#F0F6FF',
-              lineHeight: 1.05,
-              letterSpacing: -2,
+              color: '#ffffff',
+              lineHeight: 0.95,
+              letterSpacing: -3,
+              marginBottom: 8,
             }}
           >
             PRIMESOC
           </div>
 
+          {/* Sub brand */}
+          <div
+            style={{
+              fontSize: 22,
+              fontWeight: 500,
+              color: '#0891b2',
+              letterSpacing: 1,
+              marginBottom: 24,
+            }}
+          >
+            AFRICA
+          </div>
+
           {/* Tagline */}
           <div
             style={{
-              fontSize: 24,
-              color: '#7A9BBE',
-              maxWidth: 680,
-              lineHeight: 1.5,
+              fontSize: 20,
+              color: '#c7d3ea',
+              lineHeight: 1.55,
+              maxWidth: 520,
+              marginBottom: 36,
             }}
           >
-            Intelligence-Driven Cyber Defence for East Africa & Beyond
+            Intelligence-driven cyber defence — SOC monitoring, penetration testing, threat intelligence &amp; GRC compliance for East African businesses.
           </div>
 
-          {/* Services row */}
-          <div
-            style={{
-              display: 'flex',
-              gap: 12,
-              marginTop: 12,
-            }}
-          >
+          {/* Service tags */}
+          <div style={{ display: 'flex', gap: 10 }}>
             {['SOC', 'VAPT', 'CTI', 'GRC', 'Engineering'].map((tag) => (
               <div
                 key={tag}
                 style={{
                   fontFamily: 'monospace',
-                  fontSize: 12,
+                  fontSize: 11,
                   letterSpacing: 1.5,
-                  color: '#2ECAD3',
-                  background: 'rgba(30,173,181,0.1)',
-                  border: '1px solid rgba(30,173,181,0.2)',
+                  color: '#0891b2',
+                  background: 'rgba(8,145,178,0.1)',
+                  border: '1px solid rgba(8,145,178,0.25)',
                   padding: '4px 12px',
                   borderRadius: 3,
                   textTransform: 'uppercase',
@@ -150,10 +174,11 @@ export default function OGImage() {
           style={{
             position: 'absolute',
             bottom: 32,
+            left: 72,
             fontFamily: 'monospace',
-            fontSize: 14,
-            letterSpacing: 2,
-            color: '#3A567A',
+            fontSize: 13,
+            letterSpacing: 2.5,
+            color: 'rgba(199,211,234,0.35)',
             textTransform: 'uppercase',
           }}
         >

@@ -46,3 +46,42 @@ next-env.d.ts
 
 # OS
 .DS_Store
+
+# large media / binaries
+*.mov
+*.mp4
+*.eps
+
+# font download artifacts
+public/fonts/*.zip
+public/fonts/Helvetica-Neue/
+public/fonts/OnlineWebFonts_*/
+
+# stray root files
+index.html
+logo.png
+pwambua.jpeg
+FLATICON_ICONS.md
+
+# unused / legacy images
+public/images/Alert.png
+public/images/EDR.png
+public/images/IncidentResponse.png
+public/images/SIEM.jpg
+public/images/ThreatHunting.png
+public/images/incidentresponse.jpg
+public/images/threathunting.jpg
+public/images/security.png
+public/images/bg1.jpg
+public/images/bg2.jpg
+public/images/bg.jpg
+public/images/All\ the\ data-bro.svg
+public/images/Endpoint-amico.svg
+public/images/Fingerprint-amico.svg
+public/images/Fingerprint-bro.svg
+public/images/Fingerprint-cuate.svg
+public/images/Green\ and\ Black\ Modern\ Time\ Management\ Presentation.png
+public/images/Secure\ data-amico.svg
+public/images/Security-amico.svg
+public/images/Security-bro.svg
+public/images/Security-cuate.svg
