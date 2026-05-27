@@ -19,7 +19,7 @@ export async function POST(req: Request) {
 
     await resend.emails.send({
       from: 'Primesoc Website <onboarding@resend.dev>',
-      to: ['info@primesoc.africa', 'pwambua@primesoc.africa'],
+      to: ['peterwambua025@gmail.com'],
       replyTo: email,
       subject: `New Enquiry: ${service ?? 'General Inquiry'} — ${name}`,
       text: [
