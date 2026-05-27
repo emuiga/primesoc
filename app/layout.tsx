@@ -8,7 +8,7 @@ import { Toaster } from 'sonner'
 
 const exo2 = Exo_2({
   subsets: ['latin'],
-  weight: ['400', '500', '600', '700', '900'],
+  weight: ['400', '600', '700'],
   variable: '--font-display',
   display: 'swap',
 })
@@ -177,6 +177,8 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${exo2.variable} ${jetBrainsMono.variable} ${rajdhani.variable}`}
     >
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
