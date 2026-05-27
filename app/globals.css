@@ -485,17 +485,26 @@ section, footer, header { position: relative; z-index: var(--z-base); }
 .dropdown:hover .dropdown-chevron { transform: rotate(180deg); }
 
 .dropdown-menu {
-  display: none;
-  position: absolute; top: calc(100% + 6px); left: 50%;
+  position: absolute; top: 100%; left: 50%;
   transform: translateX(-50%);
   background: var(--surface-2); border: 1px solid var(--border);
   border-radius: var(--radius-lg);
   box-shadow: 0 8px 32px rgba(0,0,0,0.5);
   z-index: calc(var(--z-nav) - 1);
-  min-width: 260px; padding: 6px;
-  animation: fade-up 0.15s ease;
+  min-width: 260px;
+  /* gap lives inside as padding so the hover area is unbroken */
+  padding: 12px 6px 6px;
+  /* fade instead of display:none so there's no pointer-event dead zone */
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.15s ease, visibility 0.15s ease;
 }
-.dropdown:hover .dropdown-menu { display: block; }
+.dropdown:hover .dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
 /* Simple solution link items */
 .sol-dropdown { left: 0; transform: none; }
