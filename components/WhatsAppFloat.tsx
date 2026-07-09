@@ -1,4 +1,4 @@
-const WA_NUMBER = '254714873020'
+const WA_NUMBER = '254116157495'
 const WA_MESSAGE = 'Hi Primesoc, I\'d like to enquire about your cybersecurity services.'
 const WA_HREF = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(WA_MESSAGE)}`
 
