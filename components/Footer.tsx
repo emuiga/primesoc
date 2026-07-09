@@ -42,7 +42,7 @@ export function Footer() {
             </p>
             <div className="social-row" style={{ marginTop: 24 }}>
               <a
-                href="https://www.linkedin.com/company/primesoc"
+                href="https://www.linkedin.com/company/primesocafrica"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
@@ -51,7 +51,7 @@ export function Footer() {
                 <IconLinkedin />
               </a>
               <a
-                href="https://twitter.com/primesoc"
+                href="https://x.com/primesocafrica"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
@@ -60,7 +60,7 @@ export function Footer() {
                 <IconTwitterX />
               </a>
               <a
-                href="https://youtube.com/@primesoc"
+                href="https://youtube.com/@primesocafrica"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-btn"
@@ -101,7 +101,7 @@ export function Footer() {
             <ul>
               <li><span className="footer-contact-line">Nairobi, Kenya</span></li>
               <li><a href="mailto:info@primesoc.africa">info@primesoc.africa</a></li>
-              <li><a href="tel:+254714873020">+254 714 873 020</a></li>
+              <li><a href="tel:+254116157495">+254 116 157 495</a></li>
             </ul>
             <div className="footer-cert" style={{ marginTop: 28 }}>
               <span>24/7 Security Operations</span>
