@@ -117,6 +117,12 @@ export function Footer() {
           <span className="footer-copy" style={{ opacity: 0.5 }}>
             Registered in Kenya &mdash; Nairobi
           </span>
+          <span className="footer-copy" style={{ opacity: 0.5 }}>
+            crafted by{' '}
+            <a href="https://origin.co.ke" target="_blank" rel="noopener noreferrer">
+              origin.co.ke
+            </a>
+          </span>
         </div>
       </div>
     </footer>
