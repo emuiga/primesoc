@@ -241,7 +241,7 @@ export default function TermsPage() {
               <strong>Primesoc Limited</strong><br />
               Nairobi, Kenya<br />
               Email: <a href="mailto:info@primesoc.africa">info@primesoc.africa</a><br />
-              Phone: <a href="tel:+254714873020">+254 714 873 020</a>
+              Phone: <a href="tel:+254714873020">+254 716 157 495</a>
             </address>
 
           </div>
