@@ -27,12 +27,12 @@ const contactStrip = [
   },
   {
     label: 'Email',
-    value: 'info [at] primesoc.africa',
-    sub: 'pwambua [at] primesoc.africa',
+    value: 'info@primesoc.africa',
+    sub: 'pwambua@primesoc.africa',
   },
   {
     label: 'Phone',
-    value: '+254 714 873 020',
+    value: '+254 116 157 495',
     sub: 'Available 24/7 for emergencies',
   },
   {
