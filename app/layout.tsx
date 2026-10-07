@@ -102,7 +102,7 @@ const jsonLd = {
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   image: `${siteUrl}/logo.png`,
-  telephone: '+254714873020',
+  telephone: '+254116157495',
   email: 'info@primesoc.africa',
   address: {
     '@type': 'PostalAddress',
